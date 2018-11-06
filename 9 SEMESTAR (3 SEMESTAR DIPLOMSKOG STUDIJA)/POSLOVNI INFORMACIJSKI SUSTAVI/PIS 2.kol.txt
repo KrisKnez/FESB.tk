@@ -1,0 +1,14 @@
+PIS 2.kolokvij 23.1.2013. 
+
+1. Opišite razliku izmedu SaaS i Private Clouda. 
+
+2. Tvrtka ima udaljene poslovnice i centralnu lokaciju.
+   Pojasnite proces narucivanja i otpremanja robe poslovnicama i kupcima.
+
+3. Gdje vidite ulogu mobilnih tehnologija u procesu iz prethodnog zadatka?
+
+4. Tvrtka nabavi tri tipkovnice od tri razlicita dobavljaca po pojedinacnim cijenama
+   15kn(20kom), 20kn(20kom) i 25kn(20kom). Kolika je vrijednost robe koju je
+   tvrtka nabavila i koja je cijena koštanja artikla TIPKOVNICA.
+
+ 

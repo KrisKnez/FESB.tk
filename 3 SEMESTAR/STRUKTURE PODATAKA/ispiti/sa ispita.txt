@@ -1,0 +1,111 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+
+struct Stablo;
+typedef struct Stablo* Node;
+
+struct Stablo
+{
+int g_r;
+int m_b;
+
+Node Left;
+Node Right;
+
+};
+
+Node UnesiEl (int,int,Node);
+Node ProcDat (Node);
+void Print (Node);
+Node NadiPred (int,Node);
+
+void main()
+{
+Node root=NULL;
+Node temp;
+
+root=ProcDat(root);
+Print(root);
+
+temp=NadiPred (root->g_r,root->Left);
+printf("%d",temp->g_r);
+
+
+}
+
+
+Node ProcDat (Node T)
+{
+FILE* dat=fopen("stablo.txt","r");
+int x,y;
+if(dat==NULL)
+	printf("\ngreska u otvaranju dat");
+else
+{
+
+while(0==feof(dat))
+{
+		fscanf(dat,"%d %d",&T->g_r,&T->m_b);
+		T=UnesiEl(x,y,T);
+}
+
+}
+return T;
+
+}
+
+Node UnesiEl (int x,int y,Node T)
+{
+if(T==NULL)
+{
+T=(Node)malloc(sizeof(struct Stablo));
+T->g_r=x;
+T->m_b=y;
+T->Left=NULL;
+T->Right=NULL;
+}
+else if(x<T->g_r)
+	T->Left=UnesiEl(x,y,T->Left);
+else if(x>T->g_r)
+	T->Right=UnesiEl(x,y,T->Right);
+
+return T;
+}
+
+void Print (Node T)
+{
+static int n=0;
+int i=0;
+
+if(-1==n)
+	n=0;
+else 
+{
+n++;
+Print(T->Right);
+
+printf("\n");
+for(int i=0;i<n;i++)
+	printf("\t");
+
+printf("%d %d",T->g_r,T->m_b);
+printf("\n");
+
+n++;
+Print(T->Left);
+}
+n--;
+}
+
+Node NadiPred (int x,Node T)
+{
+while(T!=NULL)
+{
+	if(x<T->g_r)
+		T=T->Right;
+}
+	return T;
+
+
+}

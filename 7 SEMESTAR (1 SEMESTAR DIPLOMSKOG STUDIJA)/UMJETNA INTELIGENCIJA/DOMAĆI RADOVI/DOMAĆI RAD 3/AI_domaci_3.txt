@@ -1,0 +1,108 @@
+; definition of automobile structure
+(defstruct automobile
+  maker
+  model
+  engine  ; in [L]
+  hp      ; in [hp] ~ horse power, [PS] ~ Pferd Starke
+  price   ; in [EUR]
+)
+
+; returns cheapest car from given list
+(defun get-cheapest-car (cars)
+  (setq result nil)  ; set initial NIL result value
+  (dolist (c cars)
+    (cond
+      ; [c] IS the first element of list
+      ((equal (first cars) c) (setq result c))
+      ; [c] IS NOT the first element of list
+      (t (cond 
+           ; IF [c->price] < [result->price] THEN [result] := [c]
+           ((> (automobile-price result) (automobile-price c)) (setq result c))
+         )
+      ) 
+    )
+  )
+  (return-from get-cheapest-car result)
+)
+
+
+; list of automobile instances
+(setq automobiles nil)
+
+; create instance: "BMW 320i"
+(push (make-automobile 
+  :maker  "BMW" 
+  :model  "320i" 
+  :engine "2.0L, 4 cylinder in-line"
+  :hp     156.4 
+  :price  35536
+) automobiles)
+
+; create instance: "Ford Fiesta"
+(push (make-automobile
+  :maker  "Ford"
+  :model  "Fiesta"
+  :engine "1.5L, 4 cylinder in-line, 16V DOHC"
+  :hp     109
+  :price  12013
+) automobiles)
+
+; create instance: "Fiat Grande Punto"
+(push (make-automobile 
+  :maker  "Fiat" 
+  :model  "Grande Punto" 
+  :engine "1.3L Emotion, diesel"
+  :hp     76
+  :price  8660
+) automobiles)
+
+; crate instance: "Honda Civic"
+(push (make-automobile 
+  :maker  "Honda" 
+  :model  "Civic (sunroof)" 
+  :engine "1.8L, i-VTEC" 
+  :hp     132 
+  :price  21003
+) automobiles)
+
+
+; get cheapest car from the list
+(get-cheapest-car automobiles)
+
+
+
+
+; attaches property on given symbol
+(defun put (sym property value)
+  (setf (get sym property) value)
+)
+
+; check is
+(defun check-is (concept k0)
+  (setq k1 (get concept 'is))
+  (cond ((equal k1 nil) nil)
+        ((equal k1 k0)  T)
+        (T              (check-is k1 k0))
+  )
+)
+
+; check fly
+(defun check-fly (concept)
+  (cond ((or (equal concept 'bird) (check-is concept 'bird))
+    (setq flies (get concept 'fly))
+    (cond (flies flies)
+          (T     (check-fly (get concept 'is)))
+    ))
+  )
+)
+
+; semantic network initialization
+(put 'mammal 'is 'animal)
+(put 'bird   'is 'animal)
+
+(put 'woodpecker 'is 'bird)
+(put 'wren       'is 'bird)
+(put 'ostrich    'is 'bird)
+
+(put 'bird    'fly 'true)
+(put 'ostrich 'fly 'false)

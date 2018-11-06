@@ -1,0 +1,78 @@
+;unesi 10 brojeva ispiši samo parne/neparne
+
+.model small
+.data
+niz DB 10 DUP (0)
+str DB "Od 10 brojeva koje ste unijeli neparni su: $"
+.stack
+.code
+
+NoviRed MACRO
+	mov dl,10
+	mov ah,02h
+	int 21h
+	mov dl,10
+	mov ah,02h
+	int 21h
+	ENDM
+
+Start:
+
+mov ax,@DATA
+mov ds,ax
+
+mov si,0
+unos:
+	cmp si,10
+	jge neparnost
+
+	mov ah,01h
+	int 21h
+
+	sub al,48
+	cmp al,9
+	jg  kraj
+
+	mov niz[si],al
+	
+	inc si
+	jmp unos
+
+neparnost:
+
+NoviRed
+mov dx,OFFSET str
+mov ah,09h
+int 21h
+
+mov si,0
+ispisi:
+	cmp si,10
+	jge kraj
+
+	mov dl,niz[si]
+	mov ah,dl
+	
+	and ah,1
+	cmp ah,1
+
+	jne vrati ;(ako oæemo parne samo umisto jne stavit JE )
+
+	add dl,'0'
+	mov ah,02h
+	int 21h
+	
+	mov dl,' '
+	mov ah,02h
+	int 21h
+vrati:
+	inc si
+	jmp ispisi
+
+kraj:
+mov ax,4c00h
+int 21h
+
+
+
+END Start

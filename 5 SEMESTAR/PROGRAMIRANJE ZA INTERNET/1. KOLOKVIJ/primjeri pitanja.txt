@@ -1,0 +1,58 @@
+1. Koja su 4 osnovna svojstva TCP protokola?
+2. Kolika je velièina MAC adrese? Na koja dva dijela se dijeli MAC adresa?
+3. Navedite barem 5 protokola aplikacijske razine ISO-OSI mrežnog modela i njihovu funkciju ukratko.
+4. Što je obrnuto DNS mapiranje i koja se domena na Internetu koristi u svrhu obrnutog DNS mapiranja?
+5. Nacrtajte format HTTP zahtjeva sa svim detaljima.
+6. Na koji naèin URL kodiranje ili kodiranje sa postotcima (percent encoding) kodira karakter?
+7. Kako se razlikuje slanje podataka sa HTML forme korištenjem GET i POST metode?
+Objasnite to na primjeru:
+<form METHOD="POST" ACTION="http://www.fesb.hr/kiki-cgi/proba1">
+ili
+<form METHOD="GET" ACTION="http://www.fesb.hr/kiki-cgi/proba1">
+<INPUT TEXT NAME="polje"><br>
+<INPUT TEXT NAME="polje2"><br>
+<INPUT TEXT NAME="polje3"><br>
+<input type="submit" value="POKRENI PROGRAM" size="1" > 
+</form>
+8. Kakav je format statusnog koda odgovora HTTP servera i koje su trenutno definirane klase HTTP odgovora?
+9. Èemu služi MIME standard? Koje zaglavlje se koristi u HTTP standardu za navoðenje MIME tipa.
+----------------------------------------
+1. komutacija paketa 
+2. onda ping i zasto se koristi i sta se sve moze saznat sa njim 
+3. MTU i koliko je mtu za tcp 
+4. IP adrese kako se zapisuju i njihove klase 
+5. 3 osnovna dijela dns
+6. linija zahtjeva http zahtjeva 
+7. URI 
+8. GET metoda 
+9. razlika izmedju get i post metode i to pokazat na danom primjeru 
+--------------------------------------------
+1.Što je hipertekst? Kako se hipertekst implementira na World Wide Webu?
+2. Od kojih dijelova se sastoji Ethernet okvir?
+3. Što je CRC u zaglavljima paketa i èemu služi?
+4. Što je MTV(Maximum Transmission Unit) i koliki je MTU za TOP 
+paket? Kako se odreðuje MTU za TCP paket?
+5. Koja je f-ja[valjda funkcija] DNS protokola? Kakva je arhitektura 
+DNS protokola? Kakva je struktura organizacije domena?
+6. Od kojih dijelova se sastoji DNS zapis resursa?
+7. Koje dijelove sadrži linija zahtjeva http i kako formatirane?
+8. Kada se koristi OPTIONS metoda i kakav mora biti odgovor HTTP servera na HTTP zahtjev klijenta sa metodom OPTIONS?
+9. Što je HTTP proxy i kakve implementacije HTTP proxy postoje?
+10. Na koji naèin se mijenja ponašanje HTTP zahtjeva sa GET metodom ukoliko zahtjev sadrži if-Range zaglavlje? 
+---------------------------------------------------------------
+1.što je to icann ?
+2.zglalvlje http zahtjeva/odgovora
+3.nat protokol
+4.èemu služi port identifikator?u kojoj razini ISO-OSI modela se prenosi port
+5.što je CRC u zaglavljima paketa i èemu služi
+6.koji je format kodiranja HTTP protokola koje razmjenjuju HTTP klijenti i HTTP serveri
+7.nacrtajte format HTTPodgovora sa svim detaljima
+8.Od kojih se djelova sastoji DNS resource record
+---------------------------------------------------------------
+1.Koja je metoda sigurno podržana u HTTP
+2.ISO-OSI model
+3.Što je IP
+4.Ethernet okvir od èega se sastoji
+5.802.3 ?
+6.Format url 
+7.Uvjetni get

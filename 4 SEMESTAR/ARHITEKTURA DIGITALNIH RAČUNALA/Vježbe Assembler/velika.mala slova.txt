@@ -1,0 +1,95 @@
+;unesi 10 slova mala pretvori u velika a velika u mala
+
+.MODEL small
+
+.DATA
+string DB "Unesite 10 slova...$"
+slovo DB 11 DUP(0)
+.STACK
+
+.CODE
+
+NewLine MACRO
+MOV dl, 10
+MOV ah, 02h
+INT 21h
+MOV dl, 13
+MOV ah, 02h
+INT 21h
+ENDM
+
+uvecaj MACRO slovo
+SUB slovo, ' ' ;pogledaj ascii tablicu oduzmi ascci vrijednost malog slova od ascii vrijednosti razmaka i dobit æeš veliko
+ENDM
+
+umanji MACRO slovo
+ADD slovo, ' '
+ENDM
+
+ispis MACRO slovo
+MOV dl, slovo
+
+MOV ah, 02h
+INT 21h
+ENDM
+
+unos MACRO
+MOV ah, 01h
+INT 21h
+MOV slovo[si], al
+ENDM
+
+Start:
+MOV ax, @DATA
+MOV ds, ax
+;-----------------------------------
+	mov dx,OFFSET string
+	mov ah,09h
+	int 21h
+
+	NewLine
+;-----------------------------------
+
+MOV si, 0
+for_petlja:
+	CMP si, 10
+	JGE kraj
+
+unos
+
+if_petlja:
+	CMP slovo[si], 90
+	JLE veliko
+if_1:
+	CMP slovo[si], 122
+	JG kraj_if_1
+
+	uvecaj slovo[si]
+kraj_if_1:
+	JMP kraj_if_petlja
+
+veliko:
+if_2:
+	CMP slovo[si], 65
+	JL kraj_if_2
+
+	umanji slovo[si]
+kraj_if_2:
+kraj_if_petlja:
+	INC si
+	JMP for_petlja
+kraj:
+	MOV slovo[si], '$'
+
+	NewLine
+
+	MOV dx, OFFSET slovo
+	MOV ah, 09h
+	INT 21h
+
+NewLine
+
+MOV ah, 4ch
+INT 21h
+END start
+	

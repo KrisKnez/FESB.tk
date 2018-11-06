@@ -1,0 +1,37 @@
+
+(defun put (symbol name value)
+(setf (get symbol name) value))
+
+(defun CheckFly (name)
+
+(setq kprop (get name 'property))
+
+(if (eq kprop 'fly)
+T
+(progn
+(setq k (get name 'belongs))
+(if (eq k 'bird)
+(progn
+(cond ((eq kprop nil) T)
+((eq kprop 'notfly) nil)
+(T (CheckFly k)))
+))
+))
+)
+
+
+; Main
+(put 'mammal 'belongs 'animal)
+(put 'bird 'belongs 'animal)
+(put  'bird 'property 'fly)
+
+(put 'woodpecker 'belongs 'bird)
+(put 'ostrich 'belongs 'bird)
+(put 'ostrich 'property 'notfly)
+(put 'wren 'belongs 'bird)
+(print (CheckFly 'mammal))
+(print (CheckFly 'animal))
+(print (CheckFly 'bird))
+(print (CheckFly 'woodpecker))
+(print (CheckFly 'ostrich))
+(print (CheckFly 'wren))

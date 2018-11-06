@@ -1,0 +1,54 @@
+:: SADRZAJ VJEZBE
+================================================================================
+Vjezba 4 se sastoji od 6 zadataka. 3 zadatka su rijesena u .pdf-u, a preostala 3
+ostavljena za samostalni rad. U mojim .zip-ovima nalaze se rjesenja svih 6
+zadataka tako da uzmite od ovoga koliko vam treba...
+
+Logika dodjele imena fileovima je slijedeca:
+[*] za Simulink modele
+    -------------------
+    "zad" + [broj zadatka] + "_model" + ('_')
+     
+    Zadnji underscore ('_') je opcionalan i oznacava Simulink model verzije 6.6
+    (MATLAB r2007a).    
+    
+[*] za matlab skripte
+    -------------------
+    "zad" + [broj zadatka] + ("_simulink")
+    
+    Skripte s nastavkom "_simulink" crtaju grafove iz danih Simulink modela.
+
+[*] za bitmape (slike)
+    -------------------
+    "zad" + [broj zadatka] + "_odziv" + ("_simulink")
+
+    Bitmape s nastavkom "_simulink" su grafovi generirani iz prilozenih Simulink
+    modela.
+
+:: UPUTE ZA RAD SA MODELIMA I SKRIPTAMA
+================================================================================
+Procedura rada:
+[*] Matematicko odredjivanje odziva
+    --> U matlab terminalu pozvati odgovarajucu skriptu
+    
+[*] Odredjivanje odziva iz modela
+    1.) Otvoriti odgovarajuci model
+    2.) Pokrenuti simulaciju pritiskom na play button u alatnoj traci
+    3.) U matlab terminalu pozvati odgovarajucu skriptu (skripte s nastavkom
+        "_simulink")
+
+:: NAPOMENA
+================================================================================
+Odzivi generirani racunom i generirani iz Simulink modela se blago razlikuju.
+Ne znam odakle razlika u odzivima, a i opcenito ne odgovaram za tocnost ovih
+grafova. Uzmite ovo s dosta rezerve i ako tko uoci kakvu pogresku apeliram na
+istog/u da mi javi cim prije ;)
+
+For any possible further questions, feel free to ask ;)
+
+                                 _    ____           ___                      
+                                | |  / / /____ _____/ (_)____ ___  __  _______
+                                | | / / // __ `/ __  / // __ `__ \/ / / / ___/
+                                | |/ / // /_/ / /_/ / // / / / / / /_/ / /    
+                                |___/_/ \__,_/\__,_/_//_/ /_/ /_/\__, /_/     
+                                                                /____/  

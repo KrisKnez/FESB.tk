@@ -1,0 +1,67 @@
+Zadatak 1:
+
+musko(bojan).
+musko(zdravko).
+musko(vedran).
+musko(luka).
+musko(mirko).
+musko(andrej).
+musko(ante).
+zensko(tanja).
+zensko(milka).
+zensko(zlatka).
+zensko(mara).
+zensko(lucija).
+zensko(lidija).
+zensko(kristina).
+
+otac(bojan,zdravko).
+otac(zdravko,luka).
+otac(luka,ante).
+otac(vedran,luka).
+otac(zlatka,luka).
+otac(lidija,mirko).
+otac(kristina,andrej).
+otac(lucija,ante).
+
+majka(bojan,tanja).
+majka(zdravko,milka).
+majka(zlatka,milka).
+majka(vedran,milka).
+majka(lidija,lucija).
+majka(kristina,lucija).
+majka(lucija,mara).
+majka(luka,mara).
+
+roditelj(Y):-otac(X,Y).
+roditelj(Y):-majka(X,Y).
+
+djed(X,Y):-otac(X,Z),otac(Z,Y).
+djed(X,Y):-majka(X,Z),otac(Z,Y).
+****************************************
+Zadatak 2:
+
+flies(robin).
+hasfeathers(robin).
+hasfeathers(ostrich).
+bird(ostrich).
+bird(penguin).
+hasfur(brundo).
+sucklesyoung(brundo).
+swims(fliper).
+hasscales(willie).
+bird(X) :- flies(X), hasfeathers(X).
+ fish(X) :- swims(X), hasscales(X).
+ mammal(X) :- hasfur(X), sucklesyoung(X).
+ animal(X) :- fish(X).
+ animal(X) :- bird(X).
+ animal(X) :- mammal(X).
+ animal(X) :- canmove(X).
+ plant(tree).
+ plant(flower).
+canmove(amoeba).
+swims(willie).
+hasscales(fliper).
+zivo_bice(X):-plant(X).
+zivo_bice(X):-animal(X).
+******************************************

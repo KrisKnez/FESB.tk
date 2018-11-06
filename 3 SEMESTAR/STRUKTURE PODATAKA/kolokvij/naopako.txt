@@ -1,0 +1,100 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+struct Lista;
+
+typedef struct Lista * Position;
+
+struct Lista
+{
+	int El;
+	Position Next;
+};
+
+
+void ReadFromFile(Position,char*);
+void Print(Position);
+void UcitajNaopako(Position,Position);
+void main()
+{
+struct Lista L1,L2,N;
+L1.Next=NULL;
+L2.Next=NULL;
+N.Next=NULL;
+UcitajNaopako(&L1,&N);
+ReadFromFile(&L1,"L1.txt");
+Print(&L1);
+
+
+Print(&N);
+
+
+
+
+}
+
+
+
+
+void Print(Position P)
+{
+	if(NULL == P)
+		printf("\nLista je prazna!!\n");
+	else
+	{
+		printf("\nU listi se nalaze:");
+		while(P!=NULL)
+		{
+			printf("\n\t %s %s %d", P->El);
+			P=P->Next;
+		}
+	}
+
+
+}
+
+
+void ReadFromFile(Position P,char* ime_Dat)
+{
+
+	FILE *dat;
+	Position temp;
+
+
+	dat = fopen(ime_Dat, "r");
+	
+	if (NULL == dat)
+		printf("\n Ne postoji datoteke s tim imenom");
+	else
+	{
+		while(feof(dat)==0)
+		{
+			temp = (Position)malloc(sizeof(struct Lista));
+			
+			fscanf(dat, "%d", &temp->El);
+
+			temp->Next = P->Next;
+			P->Next= temp;
+			P = temp;
+		}
+
+		fclose(dat);
+	}
+}
+void UcitajNaopako(Position P,Position N)
+{
+Position q,prev,temp;
+while(P!=NULL)
+{
+prev=N;
+temp=N->Next;
+q=(Position)malloc(sizeof(struct Lista));
+q->El=P->El;
+q->Next=temp;
+prev->Next=q;
+q=N;
+
+
+ }
+ }

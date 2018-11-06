@@ -1,0 +1,39 @@
+.model small
+.data
+	niz DB 5 DUP (0)
+.stack
+.code
+Insert MACRO
+mov si,0
+unos:
+	cmp si,5
+	jge kraj_unos
+
+	mov ah,01h
+	int 21h
+	
+	sub al,'0'
+	mov niz[si],al
+
+	inc si
+	jmp unos
+
+kraj_unos:
+
+ENDM
+ 
+Start:
+mov ax,@DATA
+mov ds,ax
+
+Insert[si]
+	
+	cmp al,27
+	je kraj	
+	
+
+kraj:
+mov ax,4c00h
+int 21h
+
+END Start

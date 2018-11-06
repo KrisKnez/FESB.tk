@@ -1,0 +1,3 @@
+1. prikazane 4 funkcije(njihove krivulje) na 4 histograma. Koja od njih poboljsava kontrast slike?
+2.prikazane 4 slike a na pocetku funkcija (njena krivulja) na histogramu koja u pocetku je kao gausova krivulja na tamnom dijelu (do pola slike) a ravna crta na svijetlom (od pola). Dakle tamni dijelovi se posvijetle a svi svijtli postanu crni.
+3. na matrici slike primjeniti median filter 3X3

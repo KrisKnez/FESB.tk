@@ -1,0 +1,29 @@
+(defun multiply10 (Lista) 
+
+(setq GotovaLista nil)
+(setq Counter 0)
+(setq Limit (length Lista))
+
+(loop
+
+(setq Temp (* (pop Lista) 10))
+
+(push Temp GotovaLista)
+
+(setq Counter (+ Counter 1))
+
+(when (= Counter Limit) (return GotovaLista))
+)
+)
+
+
+; Main
+
+(format t "Unesite listu brojeva::>") ; u formatu (1 2 3 4)
+(setq Linija (READ-LINE))
+
+(setq Lista (READ-FROM-STRING Linija))
+
+(setq Rezultat (multiply10 Lista))
+
+(format t "~%Rezultat operacije je::> ~S" Rezultat)

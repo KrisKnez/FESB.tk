@@ -1,0 +1,10 @@
+1. Što je hipertekst i kako se implementira na World Wide Webu? 
+2. Koja je zadaæa dijaloške (session) razine kod ISO-OSI modela?
+3. Od kojih se dijelova sastoji Ethernet okvir? 
+4. Što je broadcast IP adresa? Kako glasi broadcast IP adresa za CARNet-ovu mrežu (166.53)?
+5. Od kojih se dijelova sastoji zapis resursa (Resource Record)?
+6. Koja je uloga GET metode kod HTTP-a? (u ovom pitanju se mislilo objasnit GET metodu, šta se vraæa ovom metodom...)
+7. na koji naèin se mijenja ponašanje HTTP zahtjeva sa GET metodom ukoliko zahtjev sadrži If-Unmodified-Since zaglavlje?
+8. Od kojih dijelova se sastoji linija statusa kod HTTP odgovora i koji je njen format? (Pod format se misli da nacrtamo oblik sa razmacima i sa CR-LF)
+9. Kakav je format statusnog koda odgovora HTTP zahtjeva i koje su trenutno definirane klase HTTP odgovora? 
+10. Nabrojite 4 vrste HTTP zaglavlja? Kakav je format HTTP zaglavlja?

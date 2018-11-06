@@ -1,0 +1,26 @@
+﻿OSNOVNA PITANJA		
+1. prostori i transformacije
+(Osim samog spacea, pricajte kako se stvaraju te matrice, npr kako se stvori view te kako se racunaju vektori lookat,up i right sto je definirano u fiji setView)
+2. IA
+3. razlika VS i PS (i sve sta ide uz to)
+
+btw 2. i 3. i ne pita jer vec nakon 1. okrece plocu
+
+PODPITANJA
+1. kod model space: Instanciranje!
+znaci da od jednod objekta stvorimo vise instanci, kopiju objekta cuvamo u VB i IB, te kasnije samo vrsimo transformacije na tom objketu u VS. Sa transformacijama znaci definiramo isti bojekt u globalnom prostoru ali s drugom pozicijom, velicinom ...
+
+2. u projekcijskom spaceu koja dva prostora imamo: Homogeneous clip space (u VS) i prostor s NDC kordinatama (u RS), te kako se računaju.
+//pogledajte zadnji pdf na portalu, ima djeljenje sa z
+
+3.Koje kutove (pazi cake ka ono množina) imamo u projekcijskom prostoru
+samo jedan kut alfu, koji služi za određivanje žarišne daljine.. formula za daljinu je d=1/(tang(alfa/2))
+
+4. kako on kaze logicko pitanje
+Ukoliko imamo model na kojemu neprimjenjujemo nikakvu transformaciju, sto ce se iscrtati na ekranu
+Posto nemamo transformacijskih matrica, mnozimo sa identity matricom koja nam predstavlja matricu world. ovaj postupak naš model prebacuje u samo srediste globalnog koordinatnog sustava, no pošto nema definirani view i projekciju, vrhovi kocke se nece vidjeti, ona ce bit veca od samo prikaza na ekranu. znaci ubiti vidimo kao dio kocke, plohu. jer je RS vec izvrsimo djeljenje sa z
+
+5. razlika izmdeu draw i draw indexa
+ draw iscrtava po redu
+ draw index, icrtava index onog vertexa kojeg želi icrtati
+

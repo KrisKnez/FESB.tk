@@ -1,0 +1,28 @@
+(defun postoji (Lista Atom) 
+
+(setq Temp (pop Lista)) ; provjeravamo element po element liste da li odgovara traženom pojmu.
+
+(if (equal Temp Atom)
+(format t "Izraz sadrzi ~S !!" Atom)
+
+(if (equal Temp nil)
+(format t "Izraz ne sadrzi ~S !!" Atom)
+
+(postoji Lista Atom) ; Ugnježðeni ifovi, poziva se rekurzija! 
+)
+
+)
+
+)
+
+; Main
+
+(format t "Unesite izraz::>") ; u formatu ( xx / yy ( 22 + 33 )  )
+(setq Linija (READ-LINE))
+
+(setq Lista (READ-FROM-STRING Linija)) ; Ova naredba pretvara proèitanu liniju u listu
+
+(format t "~%Unesite trazeni atom ::>")
+(setq Atom (READ))
+
+(postoji Lista Atom)

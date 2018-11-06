@@ -1,0 +1,57 @@
+(defun calculate (op1 op2 &optional operation)
+  ; SWITCH [operation]
+  (cond
+    ; CASE '+
+    ((equal '+ operation) (+ op1 op2))
+    ; CASE '-
+    ((equal '- operation) (- op1 op2))
+    ; CASE '*
+    ((equal '* operation) (* op1 op2))
+    ; CASE '/
+    ((equal '/ operation) (/ op1 op2))
+ 
+    ; DEFAULT
+    (t (* op1 op2))
+  )
+)
+
+
+(defun multiply10 (vec)
+  ; clear [result] list
+  (setq result nil)
+
+  ; FOR EACH [num] IN [vec]
+  (dolist (num vec)
+    (setq num (* 10 num))
+    (push num result)
+  )
+
+  ; return [result]
+  (return-from multiply10 (reverse result))
+)
+
+
+(defun find-atom (target-atom expression)
+  ; SWITCH [expression]
+  (cond 
+    ; CASE cons
+    ((consp expression) (return-from find-atom (or (find-atom target-atom (car expression)) 
+                                                   (find-atom target-atom (cdr expression))
+                                               )
+                        )
+    )
+    ; CASE atom
+    ((atom expression) (
+      cond (
+        ; IS target atom     ==> RETURN T
+        (equal target-atom expression) (return-from find-atom t))
+        ; IS NOT target atom ==> RETURN NIL
+        (t (return-from find-atom nil))
+      )
+    )
+    ; DEFAULT ==> RETURN NIL
+    (t (return-from find-atom nil)
+    )
+  )
+  (print expression)
+)

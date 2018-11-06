@@ -1,0 +1,95 @@
+(defstruct Auto
+
+Proizvodjac
+Model
+Snaga
+Boja
+PaketOpreme
+Cijena
+)
+
+
+(defun Najjeftinije (Lista)
+
+(setq Counter 0)
+(Setq Cijena 0)
+(setq CheepestPos 0)
+(setq Duljina (length ListaAuta))
+
+(setq Temp (aref ListaAuta 0))
+(setq Cijena (Auto-Cijena Temp))
+
+(loop
+(progn
+(setq Temp (aref ListaAuta Counter))
+
+(setq Cijena (Auto-Cijena Temp))
+
+(if (> Cijena (Auto-Cijena Temp))
+(progn
+(setq Cijena (Auto-Cijena Temp))
+(setq CheepestPos Counter)
+)
+)
+
+(setq Counter (+ Counter 1))
+)
+
+(when (= Counter Duljina) (return CheepestPos))
+)
+)
+
+
+; Main
+(setq Temp nil)
+(setq ListaAuta (make-array 1 :adjustable t))
+(setq UnosNovog 'y)
+(setq Counter 0)
+
+(loop
+
+(progn
+
+(setq Temp (make-Auto))
+
+(format t "Unesite proizvodjaca auta::>");
+(setf (Auto-Proizvodjac Temp) (READ-LINE))
+
+
+(format t "Unesite model auta::>");
+(setf (Auto-Model Temp) (READ-LINE))
+
+(format t "Unesite snagu auta::>");
+(setf (Auto-Snaga Temp) (READ-LINE))
+
+(format t "Unesite boju auta::>");
+(setf (Auto-Boja Temp) (READ-LINE))
+
+(format t "Unesite paket opreme auta::>");
+(setf (Auto-PaketOpreme Temp) (READ-LINE))
+
+(format t "Unesite cijenu auta::>");
+(setf (Auto-Cijena Temp) (READ))
+
+(setf (aref ListaAuta Counter) Temp)
+
+(setq Temp nil)
+(setq Counter (+ Counter 1))
+
+(format t "Zelite li unijeti jos jedno vozilo (y/n)::>")
+(setq UnosNovog (READ))
+
+(if (eq UnosNovog 'y)
+(setq ListaAuta (adjust-array ListaAuta (+ Counter 1)))
+)
+)
+
+(when (eq UnosNovog 'n) (return nil))
+)
+
+(format t "Velicina liste je ~d auta." (length ListaAuta))
+(setq CheepestPos (Najjeftinije ListaAuta))
+
+(setq Temp (aref ListaAuta CheepestPos))
+
+(format t "Najjeftinije auto je ~S ~S ~S snage ~S koji kosta ~d." (Auto-Boja Temp) (Auto-Proizvodjac Temp) (Auto-Model Temp) (Auto-Snaga Temp) (Auto-Cijena Temp))

@@ -1,0 +1,54 @@
+(defun Kalkulator (x y &Optional (Operator)) 
+
+; NAÈIN PREKO CASE (Switch u C)
+(case Operator
+('+ (format t "Rezultat operacije: ~D + ~D je ::> ~D~%" x y (+ x y)))
+('- (format t "Rezultat operacije: ~D - ~D je ::> ~D~%" x y (- x y)))
+('* (format t "Rezultat operacije: ~D * ~D je ::> ~D~%" x y (* x y)))
+('/ (format t "Rezultat operacije: ~D / ~D je ::> ~D~%" x y (/ x y)))
+(otherwise (format t "NEMA OPERATORA!! ~%Rezultat operacije: ~D * ~D je ::> ~D~%" x y (* x y)))
+)
+
+
+; NAÈIN RJEŠAVANJA PREKO IF USLOVA (Komentirano)
+;(if (Equal Operator '+) (format t "Rezultat operacije: ~D + ~D je ::> ~D~%" x y (+ x y))) ; 
+
+;(if (Equal Operator '-) (format t "Rezultat operacije: ~D - ~D je ::> ~D~%" x y (- x y)))
+
+;(if (Equal Operator '*) (format t "Rezultat operacije: ~D * ~D je ::> ~D~%" x y (* x y)))
+
+;(if (Equal Operator '/) (format t "Rezultat operacije: ~D / ~D je ::> ~F~%" x y (/ x y)))
+
+;(if (Equal Operator nil) (format t "NEMA OPERATORA!! ~%Rezultat operacije: ~D * ~D je ::> ~D~%" x y (* x y)))
+)
+
+
+; Main, prihvaæanje vrijednosti, ovde bi se moglo napravit da korisnik unese izraz pr. 2 + 3 pa da se string parsira... 
+
+(setq Operator nil) ; Postavi Operator na nil
+
+(format t "~%Unesite prvi broj::>")
+(setq x (read)) ; Unesi vrijednost x
+
+(format t "~%Unesite drugi broj::>")
+(setq y (read)) ; Unesi vrijednost y
+
+(format t "~%Operator (d/n)::>")
+(setq Izbor (read)) ; Èitaj izbor operatora
+
+(if (equal Izbor 'd)
+(
+progn ; progn naredba omoguæuje izvršavanje više od jedne naredbe unutar if uslova.
+(format t "~%Unesite operator::>")
+(setq Operator (read))
+(Kalkulator x y Operator)
+)
+
+(Kalkulator x y Operator)
+)
+
+
+
+
+
+

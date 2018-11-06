@@ -1,0 +1,39 @@
+:: SADRZAJ VJEZBE
+================================================================================
+Vjezba 3 se sastoji od 3 zadatka. U 1. zadatku rade se testiranja nad 3 sustava,
+u 2. nad 2 sustava i u 3. nad kombinacijom od 2 sustava. Za svaki sustav posebno
+je definiran njegov Simulink model osim u slucaju 3. zadatka gdje su oba sustava
+def. u zajednickom fileu. Grafovi se crtaju uz pomoc matlab skripti pri cemu
+vise razlicitih skripti koristi isti Simulink model.
+
+Logika dodjele imena fileovima je slijedeca:
+[*] za Simulink modele
+    zad + [broj zadatka] + '_' + [redni broj podzadatka]
+    
+[*] za matlab skripte
+    [ime Simulink modela koji koristi] + '_' + [opis ispitivanja]
+    
+Ispitivanja koja se rade su:
+[*] "lin"             ==> Skripta koja crta grafove za ispitivanje linearnosti
+[*] "time_inv"        ==> --||-- za ispitivanje vremenske nepromjenjivosti
+[*] "stabilnost"      ==> --||-- za ispitivanje stabilnosti sustava
+
+:: UPUTE ZA RAD SA MODELIMA I SKRIPTAMA
+================================================================================
+Procedura rada:
+1.) Otvoriti odgovarajuci model
+2.) Pokrenuti simulaciju pritiskom na play button u alatnoj traci
+3.) U matlab terminalu pozvati odgovarajucu skriptu
+
+:: NAPOMENA
+================================================================================
+U modelu "zad2_2.mdl" odabir konstante se vrsi double clickom na sklopku.
+
+For any possible further questions, feel free to ask ;)
+
+                                 _    ____           ___                      
+                                | |  / / /____ _____/ (_)____ ___  __  _______
+                                | | / / // __ `/ __  / // __ `__ \/ / / / ___/
+                                | |/ / // /_/ / /_/ / // / / / / / /_/ / /    
+                                |___/_/ \__,_/\__,_/_//_/ /_/ /_/\__, /_/     
+                                                                /____/  

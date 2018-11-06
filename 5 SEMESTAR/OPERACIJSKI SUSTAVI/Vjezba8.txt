@@ -1,0 +1,133 @@
+KOD
+Getter
+
+#include <stdio.h>
+#include <windows.h>
+#include <conio.h>
+
+void main()
+{
+	int i;
+	char buf[1024];             
+	unsigned long bread;   //bytes read  
+	ZeroMemory(buf,1024);
+
+	printf("Getter:dohvaca....\n");
+	ReadFile(GetStdHandle(STD_INPUT_HANDLE),buf,1023,&bread,NULL);  //read the stdout pipe
+	printf("broj znakova procitanih u: %d \n",bread);
+	printf("done\n");	
+    
+	for(i=0;i<(int)bread;i++)putchar(buf[i]);	
+    
+	getch();  
+}
+
+
+
+
+
+
+
+Main
+
+#include <stdio.h>
+#include <windows.h>
+#include <conio.h>
+#include <string.h>
+
+int main()
+{
+
+	char buf[1024];
+	int i;
+	unsigned long nByteRead;//proèitano bajtova
+	unsigned long avail;
+
+	STARTUPINFO si; // koristimo prilikom pokretanja procesa
+	SECURITY_ATTRIBUTES sa;   
+	SECURITY_DESCRIPTOR sd; //security information for pipes
+	PROCESS_INFORMATION pi;
+
+	HANDLE fromsender_read,togetter_read,fromsender_write,togetter_write;//pipe handles
+
+	// zbog nasljeðivanja handleova potreba za no-default secutity attributes
+
+	InitializeSecurityDescriptor(&sd,SECURITY_DESCRIPTOR_REVISION);
+	SetSecurityDescriptorDacl(&sd, TRUE, NULL, FALSE);
+
+	 sa.lpSecurityDescriptor = &sd;  
+	sa.nLength = sizeof(SECURITY_ATTRIBUTES);
+	sa.bInheritHandle = TRUE; //dozvoli nasljeðivanje handleova
+
+	if (!CreatePipe(&fromsender_read,&fromsender_write,&sa,0))//kreiraj ulaznu cijev
+	{ 
+		printf("Kreiranje cijevi : greška");
+		return 1;
+	}
+
+	 if (!CreatePipe(&togetter_read,&togetter_write,&sa,0))//kreiraj izlaznu cijev
+	{ 
+		printf("Kreiranje cijevi : greška");
+		return 1;
+	}
+	// sekcija za pokretanje sender.exe procesa
+
+	GetStartupInfo(&si); //postavi startupinfo
+
+	si.dwFlags = STARTF_USESTDHANDLES|STARTF_USESHOWWINDOW;  
+	si.hStdOutput = fromsender_write;  
+	si.hStdError = GetStdHandle(STD_ERROR_HANDLE);  
+	si.hStdInput = GetStdHandle(STD_INPUT_HANDLE);
+
+	if (!CreateProcess("sender.exe",NULL,NULL,NULL,TRUE,CREATE_NEW_CONSOLE,
+                     NULL,NULL,&si,&pi))
+	{
+		printf("Kreiranje senderproc : greška");
+		return 2;
+	}
+
+	// sekcija za pokretanje getter.exe procesa
+
+	GetStartupInfo(&si); //postavi startupinfo
+
+	si.dwFlags = STARTF_USESTDHANDLES|STARTF_USESHOWWINDOW;  
+	si.hStdOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+	si.hStdError = GetStdHandle(STD_ERROR_HANDLE);  
+	si.hStdInput = togetter_read;  
+
+	if (!CreateProcess("getter.exe",NULL,NULL,NULL,TRUE,CREATE_NEW_CONSOLE,
+                     NULL,NULL,&si,&pi))
+	{
+		printf("Kreiranje getterproceca: greška");
+		return 2;
+	}  
+
+	ReadFile(fromsender_read,buf,1023,&nByteRead,NULL);//read the stdout pipe
+	printf("Middleware proces je vratio:\n");	
+
+	for(i=0; i<(int)nByteRead; i++)putchar(buf[i]);
+	
+	WriteFile(togetter_write,buf,nByteRead,&avail,NULL);
+	  
+	CloseHandle(pi.hThread);
+	CloseHandle(pi.hProcess);  
+}
+
+
+Sender
+
+#include <stdio.h>
+#include <windows.h>
+#include <conio.h>
+
+char buf[1000]="11111111111111111111\n22222222222222222222\n33333333333333333333\n44444444444444444444\n";
+
+void main()
+{		
+	
+   unsigned long brite;
+   fprintf(stderr, "Sender:Process to generate the numbers\n");
+   WriteFile(GetStdHandle(STD_OUTPUT_HANDLE),buf,125,&brite,NULL); //send an extra newline char, if needed	
+   
+   getch();
+}

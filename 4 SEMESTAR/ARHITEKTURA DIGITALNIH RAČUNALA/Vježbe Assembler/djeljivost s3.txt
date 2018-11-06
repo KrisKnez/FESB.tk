@@ -1,0 +1,77 @@
+;unos 10 brojeva(ogranièi da su brojevi) u niz i ispiši djeljive s 3
+
+.model small
+.data
+niz DB 10 DUP (0)
+str DB "Od 10 brojeva koje ste unijeli djeljivi s 3 su: $"
+.stack
+.code
+
+NoviRed MACRO
+	mov dl,10
+	mov ah,02h
+	int 21h
+	mov dl,10
+	mov ah,02h
+	int 21h
+	ENDM
+
+Start:
+
+mov ax,@DATA
+mov ds,ax
+
+mov si,0
+unos:
+	cmp si,10
+	jge neparnost
+
+	mov ah,01h
+	int 21h
+
+	sub al,'0';--->ogranièenje da možemo unit samo broj
+	cmp al,9  ; 
+	jg  kraj  ;
+
+	mov niz[si],al
+	
+	inc si
+	jmp unos
+
+neparnost:
+
+NoviRed
+mov dx,OFFSET str
+mov ah,09h
+int 21h
+NoviRed
+
+mov si,0
+ispisi:
+	cmp si,10
+	jge kraj
+	mov dl,3;------> u dl stavljamo djeljenik
+	MOV al, niz[si]
+	
+	mov ah,0;--->u ah spremamo ostatak djeljenja
+	div dl
+	cmp ah,0;----> provjeri jeli ostatak jednak 0
+	jne kraj_ispisa
+	mov dl,niz[si]
+	add dl,'0'
+	mov ah,02h
+	int 21h
+
+	
+	
+kraj_ispisa:
+	inc si
+	jmp ispisi
+
+kraj:
+mov ax,4c00h
+int 21h
+
+
+
+END Start

@@ -1,0 +1,19 @@
+metapodaci mogu biti pohranjeni? ( XML, relacijske baze,LDAP,tekstualne datoteke i njihove karakteristike)
+replikacije (tesko da su konzistentne, teze se gube podaci,..)
+statefull alokacijski mehanizam (uzima u obzir stanje na lokaciji replike,brzi prijenos)
+sto su heuristicke metode (traze dobra rjesenja uz minimalne troskove)
+oportunisticko balansiranje opterecenja (zadatak se dodjeljuje na prvi slobodan stroj)
+preklopni algoritam (naizmjenicno koristi MCT i MET)
+meta rasporeðivaè (formira novi stupanj rasporeðivaèa povrh lokalnih)
+karakteristike centralnog rasporeðivaca
+na job pool se šalju kakvi poslovi( oni koji se ne mogu odmah izvrsiti)
+karakteristike first come first served? (lak za implementaciju, neki cvorovi mogu duze vremena biti bez posla)
+karakteristike konzervativnog backfillinga ( pa su bile navedene obe koje su od agresivnog,tako da je trebalo ostaviti prazno)
+single sign on karakteristike (samo se jednom autenticira u sustav koristeci proxy certifikat s ogranicenim vremenom trajanj, poslije se za autentikaciju automatski koristi proxy)
+karakteristike proxy certifikata(privatni kljuc se cuva ne enkriptiran u datotecnom sustavu)
+prednosti IaaS
+IaaS usluga i naplacivanje
+privatni oblak
+sa floopyem odabiremo hocemo li klijenta,servera ili workera
+tko se upariva sa classAds
+da li uvijek uspjesno upari
